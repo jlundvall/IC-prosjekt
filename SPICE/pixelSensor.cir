@@ -61,14 +61,6 @@ C1 VG VSS 1p
 
 .SUBCKT SENSOR VRESET VSTORE ERASE EXPOSE VDD VSS
 
-
-*Mname drain gate source bulk name parameter
-*MN1 V1 VPG V1 V1 nmos W=0.6u L=0.15u
-*MN2 V1 VTX V2 V2 nmos
-*MN3 VRV VPR V2 V2 nmos
-*MN4 0 V2 0 0 nmos W=0.6u L=0.15u
-
-
 * Capacitor to model gate-source capacitance
 C1 VSTORE VSS 250f   
 
