@@ -1,4 +1,3 @@
-
 module pixelArray
 	(
 	input logic      VBN1,
