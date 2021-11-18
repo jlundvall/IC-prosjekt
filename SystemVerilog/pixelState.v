@@ -124,17 +124,14 @@ module pixelState
 	logic[7:0] data2;
 	logic[7:0] data3;
 	logic[7:0] data4;
-	
 	 //------------------------------------------------------------
 	// Readout from databus
 	//------------------------------------------------------------
-	
 
    // If we are to convert, then provide a clock via anaRamp
    // This does not model the real world behavior, as anaRamp would be a voltage from the ADC
    // however, we cheat
    assign anaRamp = convert ? clk : 0;
-
    // During exposure, provide a clock via anaBias1.
    // Again, no resemblence to real world, but we cheat.
    assign anaBias1 = expose ? clk : 0;
