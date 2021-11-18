@@ -3,14 +3,14 @@ ps:
 	iverilog -g2012 -o pixelSensor -c pixelSensor.fl
 	vvp -n pixelSensor
 	
-arra:
-	iverilog -g2012 -o array -c test.fl
+array:
+	iverilog -g2012 -o array -c array.fl
 	vvp -n array
 
-states: 
+state: 
 	iverilog -g2012 -o state -c pixelState.fl
 	vvp -n state
 
-topp:
+top:
 	iverilog -g2012 -o top -c top.fl
 	vvp -n top
