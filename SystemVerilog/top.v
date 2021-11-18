@@ -8,7 +8,10 @@ module top(
 	);
 	
 	//instantiation 
-	pixelState state(clk, reset, erase, expose, convert, read1, read2, anaBias1, anaRamp, anaReset, pixData1, pixData2, pixData3, pixData4, pixelDataOut1, pixelDataOut2, pixelDataOut3, pixelDataOut4);
-	pixelArray array(anaBias1, anaRamp, anaReset, erase, expose, read1, read2, pixData1, pixData2, pixData3, pixData4);
+	pixelState state(clk, reset, erase, expose, convert, read1, read2, anaBias1, 
+			 anaRamp, anaReset, pixData1, pixData2, pixData3, pixData4, 
+			 pixelDataOut1, pixelDataOut2, pixelDataOut3, pixelDataOut4);
+	pixelArray array(anaBias1, anaRamp, anaReset, erase, expose, read1, read2, 
+			 pixData1, pixData2, pixData3, pixData4);
 
 endmodule
