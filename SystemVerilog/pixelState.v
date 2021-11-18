@@ -1,6 +1,3 @@
-//control reset, exposure, analog-to-digital conversion, readout
-
-
 module pixelState
 	(
 	input clk, reset,  
@@ -10,12 +7,9 @@ module pixelState
 	inout [7:0] pixData1, pixData2, pixData3, pixData4,
 	output [7:0] pixelDataOut1, pixelDataOut2, pixelDataOut3, pixelDataOut4
 	);
-	
-	
+
 	//states:
 	parameter ERASE=0, EXPOSE=1, CONVERT=2, READ1=3, READ2=4, IDLE=5;
-	
-	
 	
 	logic [2:0]       state,next_state;   //States
 	integer           counter;            //Delay counter in state machine
@@ -75,7 +69,6 @@ module pixelState
       endcase // case (state)
    end // always @ (state)
 
-
 	 // Control the state transitions
    always_ff @(posedge clk or posedge reset) begin
       if(reset) begin
@@ -123,10 +116,7 @@ module pixelState
            counter = counter + 1;
       end
    end // always @ (posedge clk or posedge reset)
-
-
-//-----------------------------------------------------------------------
-		 
+	
 	//------------------------------------------------------------
 	// DAC and ADC model
 	//------------------------------------------------------------
@@ -155,11 +145,7 @@ module pixelState
    assign pixData3 = read2 ? 8'bZ: data3;
    assign pixData4 = read2 ? 8'bZ: data4;
    
-   //når read er lav -> pixData = data
-   //nar read er høy -> pixData = z, så hvordan får vi 7F og verdier?
-   
-   
-    // When convert, then run an analog ramp (via anaRamp clock) and digtal ramp via
+   // When convert, then run an analog ramp (via anaRamp clock) and digtal ramp via
    // data bus. Assert convert_stop to return control to main state machine.
    always_ff @(posedge clk or posedge reset) begin
       if(reset) begin
