@@ -64,28 +64,24 @@ C1 VG VSS 1p
 
 * Capacitor to model gate-source capacitance
 C1 VSTORE VSS 100f
-*Rleak VSTORE VSS 100T
 
 * Switch to reset voltage on capacitor
 MN3 VRESET ERASE VSTORE VSTORE nmos w=0.6u l=0.15u m=4
 
 * Switch to expose pixel
 MN2 VPG EXPOSE VSTORE VSTORE nmos w=0.1u l=0.15u m=4
-*altermod MN2 tox = 10e^-6
+
 
 * Model photocurrent
 Rphoto VPG VSS 1G
+
 .ENDS
 
 *----------COMPARATOR---------------------------------------
 .SUBCKT COMP VCMP_OUT VSTORE VRAMP VDD VSS VBN1
 
-* Model comparator
-*BC1 VCMP_OUT VSS V = ((atan(100000*(V(VSTORE) - V(VRAMP)))) + 1.58)/3.14*1.5
-
-* DGSB
-
-*A1:
+* Comparator:
+* Differential gain stage:
 MP1 V3 V3 VDD VDD pmos W=0.6u L=0.15u
 MP2 V6 V3 VDD VDD pmos W=0.6u L=0.15u
 *bulk går ned til drain
@@ -93,13 +89,12 @@ MN5 V3 VSTORE V5 V5 nmos W=0.6u L=0.15u
 MN6 V5 VBN1 VSS VSS nmos W=0.6u L=0.15u
 MN7 V6 VRAMP V5 V5 nmos W=0.6u L=0.15u
 
-*A2:
+* Single ended gain stage:
 MP3 V7 V6 VDD VDD pmos W=0.6u L=0.15u
 MN8 V7 VBN1 VSS VSS nmos W=0.6u L=0.15u
 
-*A3:
+* CMOS inverter:
 MP4 VCMP_OUT V7 VDD VDD pmos W=0.6u L=0.15u
 MN9 VCMP_OUT V7 VSS VSS nmos W=0.6u L=0.15u
-
 
 .ENDS
